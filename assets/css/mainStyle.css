@@ -1,0 +1,30 @@
+html {
+    background-color: rgb(242, 255, 160);
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+a:hover {
+    color: blue;
+}
+
+a {
+    margin: 5%;
+    background-color: rgb(102, 204, 251);
+    padding: 30px;
+    color: black;
+    border: solid 1px black;
+    border-radius: 15%;
+}
