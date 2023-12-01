@@ -1,14 +1,17 @@
 <?php
+//importacion de controladores y archivo con los juegos
 require_once 'db/datos.php';
 require_once 'controllers/ClienteController.php';
 require_once 'controllers/JuegoController.php';
 require_once 'controllers/CompraController.php';
-
+//declaracion de variables globales
 $GLOBALS['clientes'] = $datos['Clientes'];
 $GLOBALS['juegos'] = $datos['Juegos'];
 $GLOBALS['compras'] = $datos['Compras'];
 
+//enrutador
 if (isset($_GET['controller']) && isset($_GET['function'])) {
+    //recoge variables de url y si existe la clase y el metodo indicados en la url los llama y estos cargan la pagina correspondiente
     $controller = $_GET['controller'];
     $controller = $controller . 'Controller';
     $controller = ucfirst($controller);
@@ -28,8 +31,8 @@ if (isset($_GET['controller']) && isset($_GET['function'])) {
         }
     } else {
         echo 'No existe controlador ' . $controller . ' o funcion ' . $function;
-        include 'views/errors/404.php';
+        include 'views/errors/404.php'; //sin no existe un controlador o una funcion manda a pagina de error
     }
 } else {
-    include 'views/index.php';
+    include 'views/index.php'; //si no hay variables en url manda a la pagina principal
 }
