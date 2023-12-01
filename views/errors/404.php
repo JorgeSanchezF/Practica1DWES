@@ -9,6 +9,7 @@
 
 <body>
     <H1>ERROR 404 NOT FOUND</H1>
+    <a href="?">Volver a incio</a>
 </body>
 
 </html>

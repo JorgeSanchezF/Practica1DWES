@@ -3,6 +3,7 @@
 require_once 'controllers/Controller.php';
 require_once 'db/datos.php';
 
+
 class CompraController implements Controller
 {
     public static function index()
@@ -78,7 +79,7 @@ class CompraController implements Controller
 
             unset($GLOBALS['compras'][$id]);
         } else {
-            # Aqui la respuesta cuando no existe y por tanto no puedo eliminar
+            #si no existe manda error y no elimina
             $GLOBALS['error'] = "No se encuentra la compra";
         }
         CompraController::index();
@@ -91,5 +92,4 @@ class CompraController implements Controller
 
         include 'views/compra/index.php';
     }
-    
 }

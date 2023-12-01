@@ -16,8 +16,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>DNI cliente</th>
-                    <th>id juego</th>
+                    <th>Nombre cliente</th>
+                    <th>Nombre juego</th>
                     <th>precio</th>
                     <th>precio total</th>
                     <th>cantidad</th>
@@ -30,20 +30,27 @@
                 <?php
                 $numero = 0;
                 if (isset($compras)) {
-                    foreach ($compras as $id => $value) {
-                        if ($value['juego_id'] > 11) {
-                            $categoria = 'Acción';
+                    $juegos = $GLOBALS['juegos'];
+                    $clientes = $GLOBALS['clientes'];
+                    foreach ($compras as $id => $value) { #por cada compra 1 fila con nombreCliente, nombreJuego, precio, precioTotal, cantidad y fecha
+
+                        foreach ($juegos as $key => $categoria) {
+                            foreach ($categoria as $key2 => $contenidoJuego) {
+                                if ($contenidoJuego['id'] == $value['juego_id']) {
+                                    $nombreJuego = $contenidoJuego['nombre'];
+                                }
+                            }
                         }
-                        if ($value['juego_id'] < 11 && $value['juego_id'] > 5) {
-                            $categoria = 'Aventura';
-                        }
-                        if ($value['juego_id'] < 6) {
-                            $categoria = 'Deporte';
+                        foreach ($clientes as $key2 => $value2) {
+                            if ($value2['dni'] == $value['cliente_dni']) {
+                                $nombreCliente = $value2['nombre'];
+                            }
                         }
 
+
                         echo '<tr>';
-                        echo '<td>' . $value['cliente_dni'] . '</td>';
-                        echo '<td>' . $categoria . '</td>';
+                        echo '<td>' . $nombreCliente . '</td>';
+                        echo '<td>' . $nombreJuego . '</td>';
                         echo '<td>' . $value['precio'] . '€</td>';
                         echo '<td>' . $value['precio'] * $value['cantidad'] . '€</td>';
                         echo '<td>' . $value['cantidad'] . '</td>';
